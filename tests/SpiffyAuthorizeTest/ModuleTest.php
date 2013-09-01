@@ -5,17 +5,17 @@ namespace SpiffyAuthorizeTest;
 use Mockery as m;
 use SpiffyAuthorize\Guard\RouteGuard;
 use SpiffyAuthorize\Module;
-use SpiffyTest\Framework\TestCase;
+use SpiffyAuthorizeTest\Util\ServiceManagerFactory;
 use Zend\EventManager\EventManager;
 use Zend\Mvc\MvcEvent;
 use Zend\ServiceManager\ServiceManager;
 
-class ModuleTest extends TestCase
+class ModuleTest extends \PHPUnit_Framework_TestCase
 {
     public function testGuards()
     {
         $em = new EventManager();
-        $sm = $this->getServiceManager();
+        $sm = ServiceManagerFactory::getServiceManager();
 
         $app = m::mock('Zend\Mvc\Application');
         $app->shouldReceive('getEventManager')
