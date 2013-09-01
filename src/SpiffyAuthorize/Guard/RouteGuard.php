@@ -46,7 +46,7 @@ class RouteGuard extends AbstractGuard
         $cleanedRules = array();
 
         foreach ($rules as $route => $permissions) {
-            if (is_numeric($permissions)) {
+            if (is_numeric($route)) {
                 $route       = $permissions;
                 $permissions = array();
             }

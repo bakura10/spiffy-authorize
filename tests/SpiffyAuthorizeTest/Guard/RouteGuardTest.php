@@ -11,14 +11,49 @@ use Zend\Mvc\Router\RouteMatch;
 
 class RouteGuardTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var RouteGuard
+     */
+    protected $guard;
+
+    public function setUp()
+    {
+        $this->guard = new RouteGuard(new AuthorizeService());
+    }
+
+    public function testDoesNotHaveRulesByDefault()
+    {
+        $this->assertCount(0, $this->guard->getRules());
+    }
+
+    public function testCanSetRulesByConstructor()
+    {
+        $guard = new RouteGuard(new AuthorizeService(), array('foo' => array('no-access')));
+        $this->assertCount(1, $guard->getRules());
+    }
+
+    public function testProperlyConvertStringPermissionToArray()
+    {
+        $this->guard->setRules(array('foo' => 'bar'));
+
+        $this->assertCount(1, $this->guard->getRules());
+        $this->assertEquals(array('bar'), $this->guard->getRules()['foo']);
+    }
+
+    public function testCanSetRulesWithNoPermissions()
+    {
+        $this->guard->setRules(array('foo'));
+
+        $this->assertCount(1, $this->guard->getRules());
+        $this->assertEquals(array(), $this->guard->getRules()['foo']);
+    }
+
     public function testNoRuleForRoute()
     {
         $mvcEvent = $this->getMvcEvent('i-do-not-know');
 
-        $guard = new RouteGuard();
-        $guard->setRules(array('foo' => array( 'no-access' )));
-        $guard->setAuthorizeService(new AuthorizeService());
-        $guard->onRoute($mvcEvent);
+        $this->guard->setRules(array('foo' => array('no-access')));
+        $this->guard->onRoute($mvcEvent);
 
         $this->assertEquals(RouteGuard::INFO_UNKNOWN_ROUTE, $mvcEvent->getParam('guard-result'));
     }
@@ -27,9 +62,7 @@ class RouteGuardTest extends \PHPUnit_Framework_TestCase
     {
         $mvcEvent = $this->getMvcEvent('foo');
 
-        $guard = new RouteGuard();
-        $guard->setAuthorizeService(new AuthorizeService());
-        $guard->onRoute($mvcEvent);
+        $this->guard->onRoute($mvcEvent);
 
         $this->assertEquals(RouteGuard::INFO_NO_RULES, $mvcEvent->getParam('guard-result'));
     }
@@ -38,10 +71,8 @@ class RouteGuardTest extends \PHPUnit_Framework_TestCase
     {
         $mvcEvent = $this->getMvcEvent('foo');
 
-        $guard = new RouteGuard();
-        $guard->setRules(array('foo' => array( 'no-access' )));
-        $guard->setAuthorizeService(new AuthorizeService());
-        $guard->onRoute($mvcEvent);
+        $this->guard->setRules(array('foo' => array('no-access')));
+        $this->guard->onRoute($mvcEvent);
 
         $this->assertEquals(RouteGuard::ERROR_UNAUTHORIZED_ROUTE, $mvcEvent->getError());
     }
@@ -56,10 +87,8 @@ class RouteGuardTest extends \PHPUnit_Framework_TestCase
             $triggered = true;
         });
 
-        $guard = new RouteGuard();
-        $guard->setRules(array('foo' => array( 'no-access' )));
-        $guard->setAuthorizeService(new AuthorizeService());
-        $guard->onRoute($mvcEvent);
+        $this->guard->setRules(array('foo' => array('no-access')));
+        $this->guard->onRoute($mvcEvent);
 
         $this->assertTrue($triggered);
     }
@@ -68,10 +97,8 @@ class RouteGuardTest extends \PHPUnit_Framework_TestCase
     {
         $mvcEvent = $this->getMvcEvent('foo');
 
-        $guard = new RouteGuard();
-        $guard->setRules(array('foo' => array( 'no-access', 'route-foo' )));
-        $guard->setAuthorizeService(new AuthorizeService());
-        $guard->onRoute($mvcEvent);
+        $this->guard->setRules(array('foo' => array('no-access', 'route-foo')));
+        $this->guard->onRoute($mvcEvent);
 
         $this->assertEquals(
             RouteGuard::INFO_AUTHORIZED,
@@ -82,10 +109,8 @@ class RouteGuardTest extends \PHPUnit_Framework_TestCase
             $mvcEvent->getParam('guard-resource')
         );
 
-        $guard = new RouteGuard();
-        $guard->setRules(array('^f\w\w$' => array( 'route-foo' )));
-        $guard->setAuthorizeService(new AuthorizeService());
-        $guard->onRoute($mvcEvent);
+        $this->guard->setRules(array('^f\w\w$' => array( 'route-foo' )));
+        $this->guard->onRoute($mvcEvent);
 
         $this->assertEquals(
             RouteGuard::INFO_AUTHORIZED,

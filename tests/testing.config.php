@@ -6,6 +6,7 @@ return array(
             'Zend\Authentication\AuthenticationService' => 'Zend\Authentication\AuthenticationService'
         )
     ),
+
     'spiffy_authorize' => array(
         'permission_providers' => array(
             array(

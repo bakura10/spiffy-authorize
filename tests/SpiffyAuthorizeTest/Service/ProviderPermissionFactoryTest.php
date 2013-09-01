@@ -3,14 +3,14 @@
 namespace SpiffyAuthorizeTest\Service;
 
 use SpiffyAuthorize\Service\ProviderPermissionFactory;
-use SpiffyTest\Framework\TestCase;
+use SpiffyAuthorizeTest\Util\ServiceManagerFactory;
 
-class ProviderPermissionFactoryTest extends TestCase
+class ProviderPermissionFactoryTest extends \PHPUnit_Framework_TestCase
 {
     public function testProvidersReturned()
     {
         $factory   = new ProviderPermissionFactory();
-        $providers = $factory->createService($this->getServiceManager());
+        $providers = $factory->createService(ServiceManagerFactory::getServiceManager());
 
         $this->assertCount(1, $providers);
         $this->assertEquals(array('foo' => array('bar', 'baz')), $providers[0]->getRules());

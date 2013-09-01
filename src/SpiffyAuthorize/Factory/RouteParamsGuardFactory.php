@@ -6,7 +6,7 @@ use SpiffyAuthorize\Guard\RouteParamsGuard;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class GuardRouteParamsFactory implements FactoryInterface
+class RouteParamsGuardFactory implements FactoryInterface
 {
     /**
      * Create service
