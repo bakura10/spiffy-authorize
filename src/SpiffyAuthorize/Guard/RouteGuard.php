@@ -3,6 +3,7 @@
 namespace SpiffyAuthorize\Guard;
 
 use SpiffyAuthorize\Exception\RuntimeException;
+use SpiffyAuthorize\Service\AuthorizeServiceInterface;
 use Zend\Mvc\MvcEvent;
 
 /**
@@ -21,6 +22,18 @@ class RouteGuard extends AbstractGuard
      * @var array
      */
     protected $rules = array();
+
+    /**
+     * Constructor
+     *
+     * @param AuthorizeServiceInterface $authorizeService
+     * @param array $rules
+     */
+    public function __construct(AuthorizeServiceInterface $authorizeService, array $rules = array())
+    {
+        parent::__construct($authorizeService);
+        $this->setRules($rules);
+    }
 
     /**
      * Set the rules

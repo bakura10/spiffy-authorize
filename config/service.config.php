@@ -11,8 +11,8 @@ return array(
         // Services that map directly to a class.
         'SpiffyAuthorize\Collector\PermissionCollector'            => 'SpiffyAuthorize\Service\CollectorPermissionFactory',
         'SpiffyAuthorize\Collector\RoleCollector'                  => 'SpiffyAuthorize\Service\CollectorRoleFactory',
-        'SpiffyAuthorize\Guard\RouteGuard'                         => 'SpiffyAuthorize\Service\GuardRouteFactory',
-        'SpiffyAuthorize\Guard\RouteParamsGuard'                   => 'SpiffyAuthorize\Service\GuardRouteParamsFactory',
+        'SpiffyAuthorize\Guard\RouteGuard'                         => 'SpiffyAuthorize\Factory\RouteGuardFactory',
+        'SpiffyAuthorize\Guard\RouteParamsGuard'                   => 'SpiffyAuthorize\Factory\RouteParamsGuardFactory',
         'SpiffyAuthorize\Provider\Identity\AuthenticationProvider' => 'SpiffyAuthorize\Provider\Identity\AuthenticationProviderFactory',
         'SpiffyAuthorize\Service\RbacService'                      => 'SpiffyAuthorize\Service\RbacServiceFactory',
         'SpiffyAuthorize\Options\ModuleOptions'                    => 'SpiffyAuthorize\Service\OptionsModuleFactory',
