@@ -17,6 +17,14 @@ use Zend\EventManager\ListenerAggregateInterface;
 interface GuardInterface extends ListenerAggregateInterface
 {
     /**
+     * Set options for the guard
+     *
+     * @param  array $options
+     * @return void
+     */
+    public function setOptions(array $options);
+
+    /**
      * Get the authorize service
      *
      * @return AuthorizeServiceInterface

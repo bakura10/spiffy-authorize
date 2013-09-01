@@ -52,6 +52,17 @@ abstract class AbstractGuard implements GuardInterface
     /**
      * {@inheritDoc}
      */
+    public function setOptions(array $options)
+    {
+        foreach ($options as $key => $value) {
+            $method = 'set' . ucfirst($key);
+            $this->$method($value);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getAuthorizeService()
     {
         return $this->authorizeService;

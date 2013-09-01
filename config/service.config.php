@@ -3,7 +3,7 @@
 return array(
     'factories' => array(
         // Services that do not have an associated class.
-        'SpiffyAuthorize\Guards'              => 'SpiffyAuthorize\Service\GuardFactory',
+        'SpiffyAuthorize\Guards'              => 'SpiffyAuthorize\Factory\GuardsFactory',
         'SpiffyAuthorize\PermissionProviders' => 'SpiffyAuthorize\Service\ProviderPermissionFactory',
         'SpiffyAuthorize\RoleProviders'       => 'SpiffyAuthorize\Service\ProviderRoleFactory',
         'SpiffyAuthorize\ViewStrategy'        => 'SpiffyAuthorize\Service\ViewStrategyFactory',
