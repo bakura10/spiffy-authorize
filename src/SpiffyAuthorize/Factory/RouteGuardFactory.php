@@ -17,7 +17,7 @@ class RouteGuardFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         /** @var \SpiffyAuthorize\Options\ModuleOptions $options */
-        $options = $serviceLocator->get('SpiffyAuthorize\ModuleOptions');
+        $options = $serviceLocator->get('SpiffyAuthorize\Options\ModuleOptions');
 
         return new RouteGuard(
             $serviceLocator->get($options->getAuthorizeService()),

@@ -28,25 +28,9 @@ return array(
             )
         ),
         'guards' => array(
-            array(
-                'name'  => 'SpiffyAuthorize\Guard\RouteGuard',
-                'options' => array(
-                    'rules' => array(
-                        'foo' => array(
-                            'bar'
-                        ),
-                    )
-                )
-            ),
-            array(
-                'name' => 'SpiffyAuthorize\Guard\RouteGuard',
-                'options' => array(
-                    'rules' => array(
-                        'baz' => array(
-                            'biz'
-                        )
-                    )
-                )
+            'route_rules' => array(
+                'foo' => array('bar'),
+                'baz' => array('biz')
             )
         ),
     )
