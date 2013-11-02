@@ -33,26 +33,28 @@ return [
     'service_manager' => [
         'factories' => [
             // Services that do not have an associated class.
-            'SpiffyAuthorize\Guards'              => 'SpiffyAuthorize\Factory\GuardFactory',
+            'SpiffyAuthorize\Guards'              => 'SpiffyAuthorize\Factory\GuardsFactory',
             'SpiffyAuthorize\PermissionProviders' => 'SpiffyAuthorize\Factory\ProviderPermissionFactory',
             'SpiffyAuthorize\RoleProviders'       => 'SpiffyAuthorize\Factory\ProviderRoleFactory',
             'SpiffyAuthorize\ViewStrategy'        => 'SpiffyAuthorize\Factory\ViewStrategyFactory',
 
             // Services that map directly to a class.
-            'SpiffyAuthorize\Collector\PermissionCollector'            => 'SpiffyAuthorize\Factory\CollectorPermissionFactory',
-            'SpiffyAuthorize\Collector\RoleCollector'                  => 'SpiffyAuthorize\Factory\CollectorRoleFactory',
-            'SpiffyAuthorize\Guard\RouteGuard'                         => 'SpiffyAuthorize\Factory\GuardRouteFactory',
-            'SpiffyAuthorize\Guard\RouteParamsGuard'                   => 'SpiffyAuthorize\Factory\GuardRouteParamsFactory',
-            'SpiffyAuthorize\Options\ModuleOptions'                    => 'SpiffyAuthorize\Factory\ModuleOptionsFactory',
-            'SpiffyAuthorize\Service\RbacService'                      => 'SpiffyAuthorize\Factory\RbacServiceFactory',
-            'SpiffyAuthorize\View\UnauthorizedStrategy'                => 'SpiffyAuthorize\Factory\ViewStrategyUnauthorizedFactory',
+            'SpiffyAuthorize\Collector\PermissionCollector' => 'SpiffyAuthorize\Factory\CollectorPermissionFactory',
+            'SpiffyAuthorize\Collector\RoleCollector'       => 'SpiffyAuthorize\Factory\CollectorRoleFactory',
+            'SpiffyAuthorize\Guard\RouteGuard'              => 'SpiffyAuthorize\Factory\RouteGuardFactory',
+            'SpiffyAuthorize\Guard\RouteParamsGuard'        => 'SpiffyAuthorize\Factory\RouteParamsGuardFactory',
+            'SpiffyAuthorize\Options\ModuleOptions'         => 'SpiffyAuthorize\Factory\ModuleOptionsFactory',
+            'SpiffyAuthorize\Service\RbacService'           => 'SpiffyAuthorize\Factory\RbacServiceFactory',
+            'SpiffyAuthorize\View\UnauthorizedStrategy'     => 'SpiffyAuthorize\Factory\ViewStrategyUnauthorizedFactory',
         ],
     ],
+
     'view_helpers' => [
         'factories' => [
             'isAuthorized' => 'SpiffyAuthorize\Factory\ViewHelperIsAuthorizedFactory',
         ]
     ],
+
     'view_manager' => [
         'template_map' => [
             'error/403'                                                => __DIR__ . '/../view/error/403.phtml',
@@ -60,6 +62,7 @@ return [
             'zend-developer-tools/toolbar/spiffy-authorize-role'       => __DIR__ . '/../view/zend-developer-tools/toolbar/spiffy-authorize-role.phtml',
         ]
     ],
+
     'zenddevelopertools' => [
         'collectors' => [
             'spiffy_authorize_permission_collector' => 'SpiffyAuthorize\Collector\PermissionCollector',

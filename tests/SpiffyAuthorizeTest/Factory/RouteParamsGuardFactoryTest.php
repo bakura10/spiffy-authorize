@@ -4,10 +4,10 @@ namespace SpiffyAuthorizeTest\Factory;
 
 use Mockery as m;
 use SpiffyAuthorize\Options\ModuleOptions;
-use SpiffyAuthorize\Factory\GuardRouteFactory;
+use SpiffyAuthorize\Factory\RouteParamsGuardFactory;
 use SpiffyAuthorizeTest\Asset\AuthorizeService;
 
-class GuardRouteFactoryTest extends \PHPUnit_Framework_TestCase
+class RouteParamsGuardFactoryTest extends \PHPUnit_Framework_TestCase
 {
     public function testInstanceReturned()
     {
@@ -18,9 +18,9 @@ class GuardRouteFactoryTest extends \PHPUnit_Framework_TestCase
         $sm->shouldReceive('get')->with('AuthorizeService')->andReturn(new AuthorizeService());
         $sm->shouldReceive('get')->with('SpiffyAuthorize\Options\ModuleOptions')->andReturn($options);
 
-        $factory  = new GuardRouteFactory();
+        $factory  = new RouteParamsGuardFactory();
         $instance = $factory->createService($sm);
 
-        $this->assertInstanceOf('SpiffyAuthorize\Guard\RouteGuard', $instance);
+        $this->assertInstanceOf('SpiffyAuthorize\Guard\RouteParamsGuard', $instance);
     }
 }

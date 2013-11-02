@@ -4,7 +4,6 @@ namespace SpiffyAuthorize\Guard;
 
 use SpiffyAuthorize\Service\AuthorizeServiceInterface;
 use Zend\EventManager\ListenerAggregateInterface;
-use Zend\Mvc\MvcEvent;
 
 /**
  * Interface that each guard must implement
