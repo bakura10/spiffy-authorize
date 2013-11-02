@@ -44,7 +44,6 @@ return [
             'SpiffyAuthorize\Guard\RouteGuard'                         => 'SpiffyAuthorize\Factory\GuardRouteFactory',
             'SpiffyAuthorize\Guard\RouteParamsGuard'                   => 'SpiffyAuthorize\Factory\GuardRouteParamsFactory',
             'SpiffyAuthorize\Options\ModuleOptions'                    => 'SpiffyAuthorize\Factory\ModuleOptionsFactory',
-            'SpiffyAuthorize\Provider\Identity\AuthenticationProvider' => 'SpiffyAuthorize\Provider\Identity\AuthenticationProviderFactory',
             'SpiffyAuthorize\Service\RbacService'                      => 'SpiffyAuthorize\Factory\RbacServiceFactory',
             'SpiffyAuthorize\View\UnauthorizedStrategy'                => 'SpiffyAuthorize\Factory\ViewStrategyUnauthorizedFactory',
         ],

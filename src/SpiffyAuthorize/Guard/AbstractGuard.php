@@ -6,12 +6,11 @@ use SpiffyAuthorize\Service\AuthorizeServiceInterface;
 use Zend\EventManager\EventManagerInterface;
 use Zend\EventManager\ListenerAggregateTrait;
 use Zend\Mvc\MvcEvent;
-use Zend\Stdlib\AbstractOptions;
 
 /**
  * Abstract class for all guards
  */
-abstract class AbstractGuard extends AbstractOptions implements GuardInterface
+abstract class AbstractGuard implements GuardInterface
 {
     /**
      * Add the listener aggregate trait
@@ -25,7 +24,6 @@ abstract class AbstractGuard extends AbstractOptions implements GuardInterface
     const INFO_NO_RULES            = 'info-no-rules';
     const INFO_UNKNOWN_ROUTE       = 'info-unknown-route';
     const ERROR_UNAUTHORIZED_ROUTE = 'error-unauthorized-route';
-    const RESOURCE_PREFIX          = 'route-';
 
     /**
      * @var AuthorizeServiceInterface
@@ -33,19 +31,21 @@ abstract class AbstractGuard extends AbstractOptions implements GuardInterface
     protected $authorizeService;
 
     /**
-     * {@inheritDoc}
+     * Constructor
+     *
+     * @param AuthorizeServiceInterface $authorizeService
      */
-    public function attach(EventManagerInterface $events)
+    public function __construct(AuthorizeServiceInterface $authorizeService)
     {
-        $this->listeners[] = $events->attach(MvcEvent::EVENT_ROUTE, array($this, 'onRoute'));
+        $this->authorizeService = $authorizeService;
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setAuthorizeService(AuthorizeServiceInterface $authorizeService)
+    public function attach(EventManagerInterface $events)
     {
-        $this->authorizeService = $authorizeService;
+        $this->listeners[] = $events->attach(MvcEvent::EVENT_ROUTE, array($this, 'onRoute'));
     }
 
     /**
