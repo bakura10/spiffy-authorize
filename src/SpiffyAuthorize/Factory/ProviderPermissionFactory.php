@@ -2,7 +2,7 @@
 
 namespace SpiffyAuthorize\Factory;
 
-use SpiffyAuthorize\ModuleOptions;
+use SpiffyAuthorize\Options\ModuleOptions;
 
 class ProviderPermissionFactory extends AbstractInstanceFactory
 {

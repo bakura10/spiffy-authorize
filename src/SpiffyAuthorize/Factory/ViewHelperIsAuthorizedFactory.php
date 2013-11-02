@@ -19,7 +19,7 @@ class ViewHelperIsAuthorizedFactory implements FactoryInterface
         /** @var \Zend\View\HelperPluginManager $serviceLocator */
         $sl = $serviceLocator->getServiceLocator();
 
-        /** @var \SpiffyAuthorize\ModuleOptions $options */
+        /** @var \SpiffyAuthorize\Options\ModuleOptions $options */
         $options = $sl->get('SpiffyAuthorize\ModuleOptions');
         $service = $sl->get($options->getAuthorizeService());
 

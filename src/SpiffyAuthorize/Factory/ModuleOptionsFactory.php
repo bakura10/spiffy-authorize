@@ -2,11 +2,11 @@
 
 namespace SpiffyAuthorize\Factory;
 
-use SpiffyAuthorize\ModuleOptions;
+use SpiffyAuthorize\Options\ModuleOptions;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class OptionsModuleFactory implements FactoryInterface
+class ModuleOptionsFactory implements FactoryInterface
 {
     /**
      * Create service

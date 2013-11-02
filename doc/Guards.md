@@ -38,14 +38,9 @@ look like:
 return array(
     'spiffy_authorize' => array(
         'guards' => array(
-            array(
-                'type'    => 'SpiffyAuthorize\Guard\RouteGuard',
-                'options' => array(
-                    'rules' => array(
-                        'my_route' => array('resource1', 'resource2'),
-                        'admin*'   => array('administrator')
-                    )
-                )
+            'route_rules' => array(
+                'my_route' => array('resource1', 'resource2'),
+                'admin*'   => array('administrator')
             )
         )
     )
@@ -61,7 +56,7 @@ Also note that you can avoid passing an array if you only have one permission. T
 rewritten the following way:
 
 ```php
-'rules' => array(
+'route_rules' => array(
 	'my_route' => array('resource1', 'resource2'),
     'admin*'   => 'administrator'
 )

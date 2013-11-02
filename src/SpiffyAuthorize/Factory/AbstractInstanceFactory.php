@@ -2,7 +2,7 @@
 
 namespace SpiffyAuthorize\Factory;
 
-use SpiffyAuthorize\ModuleOptions;
+use SpiffyAuthorize\Options\ModuleOptions;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -16,8 +16,8 @@ abstract class AbstractInstanceFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        /** @var \SpiffyAuthorize\ModuleOptions $options */
-        $options   = $serviceLocator->get('SpiffyAuthorize\ModuleOptions');
+        /** @var \SpiffyAuthorize\Options\ModuleOptions $options */
+        $options   = $serviceLocator->get('SpiffyAuthorize\Options\ModuleOptions');
         $instances = array();
 
         foreach ($this->getInstances($options) as $config) {

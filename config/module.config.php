@@ -21,11 +21,7 @@ return [
         'role_providers' => [],
 
         // Guard listeners to be attached to the application event manager.
-        'guards' => [
-            'params_guard' => [
-                'name' => 'SpiffyAuthorize\Guard\RouteParamsGuard'
-            ]
-        ],
+        'guards' => [],
 
         // The service locator name used to get strategy listener to handle permission errors.
         'view_strategy' => 'SpiffyAuthorize\View\UnauthorizedStrategy',
@@ -33,6 +29,7 @@ return [
         // The template to use for displaying unauthorized errors'
         'view_template' => 'error/403',
     ],
+
     'service_manager' => [
         'factories' => [
             // Services that do not have an associated class.
@@ -46,7 +43,7 @@ return [
             'SpiffyAuthorize\Collector\RoleCollector'                  => 'SpiffyAuthorize\Factory\CollectorRoleFactory',
             'SpiffyAuthorize\Guard\RouteGuard'                         => 'SpiffyAuthorize\Factory\GuardRouteFactory',
             'SpiffyAuthorize\Guard\RouteParamsGuard'                   => 'SpiffyAuthorize\Factory\GuardRouteParamsFactory',
-            'SpiffyAuthorize\ModuleOptions'                            => 'SpiffyAuthorize\Factory\OptionsModuleFactory',
+            'SpiffyAuthorize\Options\ModuleOptions'                    => 'SpiffyAuthorize\Factory\ModuleOptionsFactory',
             'SpiffyAuthorize\Provider\Identity\AuthenticationProvider' => 'SpiffyAuthorize\Provider\Identity\AuthenticationProviderFactory',
             'SpiffyAuthorize\Service\RbacService'                      => 'SpiffyAuthorize\Factory\RbacServiceFactory',
             'SpiffyAuthorize\View\UnauthorizedStrategy'                => 'SpiffyAuthorize\Factory\ViewStrategyUnauthorizedFactory',

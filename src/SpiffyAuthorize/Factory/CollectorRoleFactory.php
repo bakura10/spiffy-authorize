@@ -3,7 +3,6 @@
 namespace SpiffyAuthorize\Factory;
 
 use SpiffyAuthorize\Collector\RoleCollector;
-use SpiffyAuthorize\Guard\RouteGuard;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -17,8 +16,8 @@ class CollectorRoleFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        /** @var \SpiffyAuthorize\ModuleOptions $options */
-        $options  = $serviceLocator->get('SpiffyAuthorize\ModuleOptions');
+        /** @var \SpiffyAuthorize\Options\ModuleOptions $options */
+        $options  = $serviceLocator->get('SpiffyAuthorize\Options\ModuleOptions');
         $provider = $serviceLocator->get($options->getIdentityProvider());
 
         return new RoleCollector($provider);

@@ -3,7 +3,7 @@
 namespace SpiffyAuthorizeTest\Factory;
 
 use Mockery as m;
-use SpiffyAuthorize\ModuleOptions;
+use SpiffyAuthorize\Options\ModuleOptions;
 use SpiffyAuthorize\Factory\ViewStrategyFactory;
 use SpiffyAuthorize\View\UnauthorizedStrategy;
 
@@ -15,7 +15,7 @@ class ViewStrategyFactoryTest extends \PHPUnit_Framework_TestCase
         $options->setViewStrategy('Strategy');
 
         $sm = m::mock('Zend\ServiceManager\ServiceManager');
-        $sm->shouldReceive('get')->with('SpiffyAuthorize\ModuleOptions')->andReturn($options);
+        $sm->shouldReceive('get')->with('SpiffyAuthorize\Options\ModuleOptions')->andReturn($options);
         $sm->shouldReceive('get')->with('Strategy')->andReturn(new UnauthorizedStrategy());
 
         $factory  = new ViewStrategyFactory();

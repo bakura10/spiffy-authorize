@@ -16,8 +16,8 @@ class ViewStrategyFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        /** @var \SpiffyAuthorize\ModuleOptions $options */
-        $options = $serviceLocator->get('SpiffyAuthorize\ModuleOptions');
+        /** @var \SpiffyAuthorize\Options\ModuleOptions $options */
+        $options = $serviceLocator->get('SpiffyAuthorize\Options\ModuleOptions');
 
         return $serviceLocator->get($options->getViewStrategy());
     }

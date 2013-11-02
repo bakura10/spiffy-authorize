@@ -3,14 +3,13 @@
 namespace SpiffyAuthorizeTest\Factory;
 
 use Mockery as m;
-use SpiffyAuthorize\ModuleOptions;
+use SpiffyAuthorize\Options\ModuleOptions;
 use SpiffyAuthorize\Provider\Identity\AuthenticationProvider;
 use SpiffyAuthorize\Factory\CollectorPermissionFactory;
 use SpiffyAuthorize\Service\RbacService;
 use SpiffyAuthorizeTest\Asset\Identity;
 use SpiffyAuthorizeTest\Asset\RbacRoleProvider;
 use Zend\Mvc\MvcEvent;
-use Zend\ServiceManager\ServiceManager;
 
 class CollectorPermissionFactoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -28,7 +27,7 @@ class CollectorPermissionFactoryTest extends \PHPUnit_Framework_TestCase
 
         $sm = m::mock('Zend\ServiceManager\ServiceManager');
         $sm->shouldReceive('get')->with('AuthorizeService')->andReturn($service);
-        $sm->shouldReceive('get')->with('SpiffyAuthorize\ModuleOptions')->andReturn($options);
+        $sm->shouldReceive('get')->with('SpiffyAuthorize\Options\ModuleOptions')->andReturn($options);
 
         $factory  = new CollectorPermissionFactory();
         $instance = $factory->createService($sm);
