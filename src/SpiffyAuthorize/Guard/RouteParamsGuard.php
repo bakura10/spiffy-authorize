@@ -6,7 +6,7 @@ use SpiffyAuthorize\Exception\RuntimeException;
 use Zend\Mvc\MvcEvent;
 
 /**
- * A guard that checks for a 'permissions' param for the matched route
+ * A guard that checks for a "resources" param for the matched route
  */
 class RouteParamsGuard extends AbstractGuard
 {

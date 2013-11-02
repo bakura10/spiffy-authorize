@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiffyAuthorize;
+namespace SpiffyAuthorize\Options;
 
 use Zend\Stdlib\AbstractOptions;
 
